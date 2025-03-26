@@ -17,7 +17,7 @@ import { Recommendations } from '../recommendations/recommendations.component';
 })
 export class FindShowComponent implements OnInit {
   input: string;
-  shows!: Show[];
+  shows: Show[]|null;
   loading!:boolean;
   selectedShows:Show[]
   showForm!: FormGroup;
@@ -26,7 +26,7 @@ export class FindShowComponent implements OnInit {
 
   constructor(private showService:ShowService, private alertService:AlertService, private recommendationsComponent:Recommendations, private formBuilder:FormBuilder,private router:Router) {
     this.input = "";
-    this.shows;
+    this.shows = null;
     this.loading;
     this.selectedShows = [];
     this.showIds = [];
@@ -40,8 +40,8 @@ export class FindShowComponent implements OnInit {
   search(): void {
     this.input = this.showForm.get('showSearch')?.value;
     this.loading = true;
-    this.showService.getRecordsByInput(this.input)
-      .subscribe(shows => {this.shows = shows
+    const result = this.showService.getRecordsByInput(this.input)
+      .subscribe(shows => {this.shows = shows.value
       this.loading = false;
     });
     

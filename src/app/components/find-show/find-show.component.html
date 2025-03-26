@@ -19,7 +19,7 @@
                     <a class="choose-show" *ngFor="let show of shows" (click)="selectShow(show)">
                         <div class="card mb-2">
                             <div class="row no-gutters">
-                                <div class="col-md-1">
+                                <div class="col-md-7">
                                     <img [src]="show.imageUrl ? 'https://www.thetvdb.com' + show.imageUrl : 'assets/img/show.jpg'" alt="Show Image" class="img-fluid" style="max-width: 100px;"> 
                                 </div>
                                 <div class="col-md-9">
@@ -45,23 +45,24 @@
             <h3>Selected Shows</h3>
             <br class="line-break-selected">
             <div class="card mb-2" *ngFor="let show of showForm.get('selectedShows')?.value">
-                <div class="row no-gutters">
-                    <div class="col-md-1">
-                        <img [src]="show.imageUrl ? 'https://www.thetvdb.com' + show.imageUrl : 'assets/img/show.jpg'" alt="Show Image" class="img-fluid" style="max-width: 100px;"> 
+                <div class="row no-gutters align-items-center">
+                    <div class="col-3 col-md-1 d-flex justify-content-center">
+                        <img [src]="show.imageUrl ? 'https://www.thetvdb.com' + show.imageUrl : 'assets/img/show.jpg'" 
+                             alt="Show Image" class="img-fluid" style="max-width: 100px;"> 
                     </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ show.name }}</h5>
-                            <p class="card-text">{{ show.releaseYear }}</p>
+                    <div class="col-9 col-md-3 d-flex align-items-center">
+                        <div class="card-body p-0">
+                            <h5 class="card-title mb-0">{{ show.name }}</h5>
+                            <p class="card-text mb-0">{{ show.releaseYear }}</p>
                         </div>
                     </div>
-                    <div class="col-md-1 ml-auto text-right">
+                    <div class="col-12 col-md-1 ml-auto text-right">
                         <button class="btn btn-danger btn-sm" (click)="removeShow(show)">X</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
     </section>
     <div class="row justify-content-center">
         <div class="glowing-btn-wrapper mt-3 mr-3">
